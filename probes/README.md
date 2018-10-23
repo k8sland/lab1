@@ -1,4 +1,4 @@
-# K8sLand Probes Lab
+# Probes Lab
 
 ![docker hub](https://img.shields.io/docker/pulls/imhotepio/learnk8s-java.svg?style=flat-square)
 ![docker hub](https://img.shields.io/docker/stars/imhotepio/learnk8s-java.svg?style=flat-square)
