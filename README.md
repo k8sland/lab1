@@ -1,4 +1,6 @@
-# <img src="assets/lab.png" width="32" height="auto"/> K8sLand Level I Labs
+# <img src="assets/lab.png" width="32" height="auto"/> K8sLand Labs
+
+## Description
 
 Labs associated with K8sland Level I training.
 
