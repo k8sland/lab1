@@ -1,0 +1,48 @@
+---
+# Deployment
+apiVersion: apps/v1beta2
+kind:       Deployment
+metadata:
+  name: hello
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hello
+  template:
+    metadata:
+      labels:
+        app: hello
+    spec:
+      containers:
+      - name:            hello
+        image:           CHANGE_ME
+        imagePullPolicy: CHANGE_ME
+        resources:
+          requests:
+            cpu:    CHANGE_ME
+            memory: CHANGE_ME
+          limits:
+            cpu:    CHANGE_ME
+            memory: CHANGE_ME
+        livenessProbe:
+            CHANGE_ME
+        readinessProbe:
+            CHHANGE_ME
+        ports:
+        - name:          http
+          containerPort: CHANGE_ME
+
+---
+# Service
+kind:       Service
+apiVersion: v1
+metadata:
+  name: hello
+spec:
+  type:  NodePort
+  selector:
+    app: hello
+  ports:
+    - port:     CHANGE_ME
+      nodePort: CHANGE_ME
