@@ -1,4 +1,4 @@
-# LearnK8s-Java
+# Probes Lab
 
 ![docker hub](https://img.shields.io/docker/pulls/imhotepio/learnk8s-java.svg?style=flat-square)
 ![docker hub](https://img.shields.io/docker/stars/imhotepio/learnk8s-java.svg?style=flat-square)
@@ -23,18 +23,18 @@ A sample Spring Boot demo application to illustrate java based deployments with 
     make push
     ```
 
-1. Provision the application
+2. Provision the application
 
     ```shell
     kubectl apply -f k8s/hello.yml
     ```
 
-1. Verify!
+3. Verify!
 
     ```shell
-    curl -XGET http://MY_IP:30800/hello
+    curl -XGET http://$(minikube ip):30800/hello
     ```
 
 ---
-<img src="assets/imhoteplogo.png" width="32" height="auto"/> © 2018 Imhotep Software LLC.
+<img src="../assets/imhoteplogo.png" width="32" height="auto"/> © 2018 Imhotep Software LLC.
 All materials licensed under [Apache v2.0](http://www.apache.org/licenses/LICENSE-2.0)
