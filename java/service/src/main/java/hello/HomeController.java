@@ -5,10 +5,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @RestController
 public class HomeController {
-    @RequestMapping("/hello")
-    public String index() {
-        return "CHANGE_ME -- add a cool greeting!";
-    }
+  @RequestMapping("/hello")
+  public String index() {
+    return "Greetings for K8sLand!";
+  }
 
-    // CHANGE_ME - Add /heath endpoint
+  @RequestMapping("/health")
+  public String health() {
+    return "OK";
+  }
 }

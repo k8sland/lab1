@@ -1,8 +1,9 @@
-IMG_NAME := CHANGE_ME/learnk8s-java
-IMG_TAG  := CHANGE_ME
+REGISTRY := k8sland
+VERSION  := 0.0.1
+APP      := probes-java
+IMAGE    := ${REGISTRY}/${APP}:${VERSION}
 
-help:
-	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'
+default: help
 
 build: ## Compiles the program
 	@pushd service ;\
@@ -11,8 +12,11 @@ build: ## Compiles the program
 	mkdir -p jars ;\
 	cp service/target/hello-0.0.1.jar jars
 
-img:   ## Build docker image
-	@docker build -f Dockerfile --rm -t $(IMG_NAME):$(IMG_TAG) .
+img: build  ## Build docker image
+	@docker build -f Dockerfile --rm -t ${IMAGE} .
 
-push:  ## Push docker image to registry
-	@docker push $(IMG_NAME):$(IMG_TAG)
+push: img ## Push docker image to registry
+	@docker push ${IMAGE}
+
+help:
+	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[38;5;69m%-30s\033[38;5;168m %s\n", $$1, $$2}'

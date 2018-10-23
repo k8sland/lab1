@@ -1,6 +1,6 @@
 ---
 # Deployment
-apiVersion: apps/v1beta2
+apiVersion: apps/v1
 kind:       Deployment
 metadata:
   name: hello
@@ -16,22 +16,30 @@ spec:
     spec:
       containers:
       - name:            hello
-        image:           CHANGE_ME
-        imagePullPolicy: CHANGE_ME
+        image:           k8sland/probes-java:0.0.1
+        imagePullPolicy: Always
         resources:
           requests:
-            cpu:    CHANGE_ME
-            memory: CHANGE_ME
+            cpu:    500m
+            memory: 500Mi
           limits:
-            cpu:    CHANGE_ME
-            memory: CHANGE_ME
+            cpu:    1
+            memory: 800Mi
         livenessProbe:
-            CHANGE_ME
+          httpGet:
+            path: /health
+            port: http
+          initialDelaySeconds: 5
+          periodSeconds:       10
         readinessProbe:
-            CHHANGE_ME
+          httpGet:
+            path: /health
+            port: http
+          initialDelaySeconds: 20
+          periodSeconds:       5
         ports:
         - name:          http
-          containerPort: CHANGE_ME
+          containerPort: 8080
 
 ---
 # Service
@@ -44,5 +52,5 @@ spec:
   selector:
     app: hello
   ports:
-    - port:     CHANGE_ME
-      nodePort: CHANGE_ME
+    - port:     8080
+      nodePort: 30800
