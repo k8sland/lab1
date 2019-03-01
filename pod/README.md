@@ -2,7 +2,7 @@
 
 <br/>
 
-# <img src="../assets/lab.png" width="32" height="auto"/> Resources Lab
+# <img src="../assets/lab.png" width="32" height="auto"/> Pod Lab
 
 > Deploy an **Iconoflix** api server using a pod.
 
