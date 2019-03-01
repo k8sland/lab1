@@ -55,7 +55,7 @@ kubectl logs -f iconoflix
 
 ```shell
 kubectl exec -it iconoflix -- bash
-wget http://localhost:4000
+wget http://localhost:4000/
 ```
 
 ## Update image
@@ -84,7 +84,7 @@ You can ssh to the master and hit the service using the pod id.
 ```shell
 kubectl describe po iconoflix | grep IP
 minikube ssh
-curl -XGET http://POD_IP:4000
+curl -XGET http://POD_IP:4000/
 ```
 
 <br/>
