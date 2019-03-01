@@ -6,7 +6,7 @@
 
 > Deploy an **Iconoflix** api server using a pod.
 
-1. Create a pod manifest for **Iconoflix** (k8s/iconoflix.yml)
+1. Create a pod manifest for **Iconoflix** (see k8s/iconoflix.yml)
     1. Docker image: [Iconoflix](https://quay.io/repository/imhotepio/iconoflix)
     2. Use image tag: **mem**
 2. Make sure to read the Iconoflix Docker image documentation!
