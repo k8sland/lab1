@@ -1,0 +1,13 @@
+---
+# Pod
+apiVersion: v1
+kind: Pod
+metadata:
+  name: <!!CHANGE_ME!!>
+spec:
+  containers:
+    - name: <!!CHANGE_ME!!>
+      image: <!!CHANGE_ME!!>
+      imagePullPolicy: <!!CHANGE_ME!!>
+      ports:
+        - containerPort: <!!CHANGE_ME!!>
