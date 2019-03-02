@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: <!!CHANGE_ME!!>
+spec:
+  replicas: <!!CHANGE_ME!!>
+  selector: <!!CHANGE_ME!!>
+  template:
+    metadata:
+      labels:
+        app: <!!CHANGE_ME!!>
+    spec:
+      containers:
+        - name: iconoflix
+          image: quay.io/imhotepio/iconoflix:mem
+          ports:
+            - containerPort: 4000
