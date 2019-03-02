@@ -1,0 +1,24 @@
+---
+# ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: apiproxy
+rules:
+  - apiGroups: <!!CHANGE_ME!!>
+    resources: <!!CHANGE_ME!!>
+    verbs: <!!CHANGE_ME!!>
+---
+# ClusterRoleBinding...
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: apiproxy
+subjects:
+  - kind: ServiceAccount
+    name: <!!CHANGE_ME!!>
+    namespace: <!!CHANGE_ME!!>
+roleRef:
+  kind: <!!CHANGE_ME!!>
+  name: <!!CHANGE_ME!!>
+  apiGroup: rbac.authorization.k8s.io

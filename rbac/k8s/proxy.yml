@@ -1,0 +1,70 @@
+---
+# ServiceAccount...
+apiVersion: v1
+kind:       ServiceAccount
+metadata:
+  name:      apiproxy
+  namespace: default
+---
+# Deployment
+kind:       Deployment
+apiVersion: apps/v1
+metadata:
+  name: apiproxy
+  labels:
+    app: apiproxy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: apiproxy
+  template:
+    metadata:
+      labels:
+        app: apiproxy
+    spec:
+      serviceAccountName: apiproxy
+      containers:
+      - name:            apiproxy
+        image:           k8sland/go-api-proxy:0.0.1
+        imagePullPolicy: IfNotPresent
+        args:            ["/app/apiproxy"]
+        resources:
+          requests:
+            cpu:    100m
+            memory: 25Mi
+          limits:
+            cpu:    200m
+            memory: 50Mi
+        readinessProbe:
+          httpGet:
+            path: /v1/healthz
+            port: http
+          initialDelaySeconds: 5
+          periodSeconds:       5
+        livenessProbe:
+          httpGet:
+            path: /v1/healthz
+            port: http
+          initialDelaySeconds: 5
+          periodSeconds:       5
+        ports:
+        - name:          http
+          containerPort: 4004
+
+---
+kind:       Service
+apiVersion: v1
+metadata:
+  name: apiproxy
+  labels:
+    app: apiproxy
+spec:
+  type: NodePort
+  selector:
+    app: apiproxy
+  ports:
+    - name:     http
+      protocol: TCP
+      nodePort: 30404
+      port:     4004
