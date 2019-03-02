@@ -1,0 +1,30 @@
+image:
+  repository: postgres
+  tag: <!!CHANGE_ME!!>
+  pullPolicy: IfNotPresent
+
+postgresqlUsername: <!!CHANGE_ME!!>
+postgresqlPassword: <!!CHANGE_ME!!>
+postgresqlDatabase: iconoflix
+
+securityContext:
+  enabled: true
+  fsGroup: 70
+  runAsUser: 70
+
+resources:
+  requests:
+    cpu: 500m
+    memory: 256Mi
+  limits:
+    cpu: 750m
+    memory: 512Mi
+
+persistence:
+  enabled: true
+  accessMode: ReadWriteOnce
+  size: 100Mi
+  subPath: postgresql-db
+
+metrics:
+  enabled: false

@@ -1,0 +1,19 @@
+replicaCount: 1
+
+image:
+  pullPolicy: Always
+
+service:
+  type: NodePort
+  nodePort: 30401
+
+db:
+  host: icx-db-postgresql
+  port: 5432
+  # Secret the name of the database secret
+  secret: <!!CHANGE_ME!!>
+  # PwdKey the name of the secret key containing the db password
+  pwd_key: <!!CHANGE_ME!!>
+  # User the name of the database user
+  user: <!!CHANGE_ME!!>
+  name: iconoflix

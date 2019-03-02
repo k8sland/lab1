@@ -1,0 +1,11 @@
+api:
+  url: http:\/\/<!!CHANGE_ME!!>:30401\/picker
+
+image:
+  repository: quay.io/imhotepio/icx-go-gql-ui
+  tag: 0.1.1
+  pullPolicy: Always
+
+service:
+  type: NodePort
+  nodePort: 30402
