@@ -1,40 +1,43 @@
-# Probes Lab
-
-![docker hub](https://img.shields.io/docker/pulls/imhotepio/learnk8s-java.svg?style=flat-square)
-![docker hub](https://img.shields.io/docker/stars/imhotepio/learnk8s-java.svg?style=flat-square)
-![docker hub](https://img.shields.io/docker/build/imhotepio/learnk8s-java.svg?style=flat-square)
-![docker hub](https://img.shields.io/docker/automated/imhotepio/learnk8s-java.svg?style=flat-square)
+<img src="../assets/k8sland.png" align="right" width="128" height="auto"/>
 
 <br/>
-A sample Spring Boot demo application to illustrate java based deployments with Kubernetes
+
+# <img src="../assets/lab.png" width="32" height="auto"/> Probes Lab
+
+> Add Readiness/Liveliness probes to an Iconoflix application
+
+1. In the given Iconoflix deployment (k8s/iconoflix.yml) add a HTTP Readiness probe
+   1. Use /check/alive
+1. Monitor your endpoints
+   1. kubectl get ep --watch
+1. What do you see?
+1. Now redeploy your Iconoflix pod but with a Readiness delay to 20s
+1. What do you notice in your Iconoflix endpoint?
+1. Next define a HTTP Liveliness probe on the Iconoflix container
+   1. /check/health
+1. Watch the Iconoflix pod logs
+1. What do you notice?
+1. Delete your application
+
+<br/>
 
 ---
-## Prerequisites
+## <img src="../assets/fox.png" width="32" height="auto"/> Commands
 
-- Java8+
-- Maven
-- Docker
+- Watching endpoints
 
-## Setup
+  ```shell
+  kubectl get ep --watch
+  ```
 
-1. Build Jar file, Docker image and publish it!
+- Check probes are working
 
-    ```shell
-    make push
-    ```
+  ```shell
+  kubectl logs -f `kubectl get po -l app=iconoflix -o go-template='{{(index .items 0).metadata.name}}'`
+  ```
 
-2. Provision the application
-
-    ```shell
-    kubectl apply -f k8s/hello.yml
-    ```
-
-3. Verify!
-
-    ```shell
-    curl -XGET http://$(minikube ip):30800/hello
-    ```
+<br/>
 
 ---
-<img src="../assets/imhoteplogo.png" width="32" height="auto"/> © 2018 Imhotep Software LLC.
+<img src="../assets/imhotep_logo.png" width="32" height="auto"/> © 2018 Imhotep Software LLC.
 All materials licensed under [Apache v2.0](http://www.apache.org/licenses/LICENSE-2.0)
