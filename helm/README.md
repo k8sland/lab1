@@ -122,15 +122,16 @@
 
   ```shell
   helm search postgres
-  helm install stable/postgresql -n icx-db --replace -f pg.yml
+  helm install stable/postgresql -n icx-db --replace -f k8s/pg.yml
   ```
 
 - Verify the Database is up and running correctly
 
   ```shell
   kubectl get po,svc,ep
-  kubectl port-forward MY_PG_POD_ID 5432 &
-  psql -U fernand -W -h localhost -p 5432 iconoflix
+  kubectl port-forward -n default svc/icx-db-postgresql 5432 &
+  # Create the iconoflix database...
+  PGPASSWORD="postgres" psql -U postgres -h localhost -p 5432 -c 'create database iconoflix'
   ```
 
 - Deploy Iconoflix api and ui
@@ -138,8 +139,8 @@
 
   ```shell
   helm search icx
-  helm install imhotep/icx-go-gql -n icx-go --replace -f icx-go-gql.yml
-  helm install imhotep/icx-ui-gql -n icx-ui --replace -f icx-ui-gql.yml
+  helm install iconoflix/icx-go-gql -n icx-go --replace -f k8s/icx-go-gql.yml
+  helm install iconoflix/icx-ui-gql -n icx-ui --replace -f k8s/icx-ui-gql.yml
   ```
 
 - Launch the ui

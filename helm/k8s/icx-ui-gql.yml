@@ -1,12 +1,11 @@
-
 api:
-  url: http:\/\/192.168.64.12:30400\/picker
+  url: http:\/\/192.168.64.83:30401\/picker
 
 image:
   repository: quay.io/imhotepio/icx-go-gql-ui
-  tag:        0.1.1
+  tag: 0.1.1
   pullPolicy: Always
 
 service:
-  type:         NodePort
-  externalPort: 30401
+  type: NodePort
+  nodePort: 30402

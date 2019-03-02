@@ -1,4 +1,3 @@
-
 replicaCount: 1
 
 image:
@@ -9,9 +8,9 @@ service:
   nodePort: 30401
 
 db:
-  host:    icx-db-postgresql
-  port:    5432
-  secret:  icx-db-postgresql
-  pwd_key: postgres-password
-  user:    fernand
-  name:    iconoflix
+  host: icx-db-postgresql
+  port: 5432
+  secret: icx-db-postgresql
+  pwd_key: postgresql-password
+  user: postgres
+  name: iconoflix

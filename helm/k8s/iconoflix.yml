@@ -1,10 +1,9 @@
-
 configs:
-  api_url: http:\/\/http://192.168.64.12:30400
+  api_url: http:\/\/http://192.168.64.83:30400
 
 image:
   repository: quay.io/imhotepio/iconoguess
-  tag:        0.0.1
+  tag: 0.0.1
   pullPolicy: Always
 
 service:
@@ -16,11 +15,11 @@ iconoflix-api:
     tag: prom
 
   pg:
-    user:    fernand
-    host:    icx-db-postgresql
-    secret:  icx-db-postgresql
+    user: fernand
+    host: icx-db-postgresql
+    secret: icx-db-postgresql
     pwd_key: postgres-password
 
   service:
-    type:         NodePort
+    type: NodePort
     externalPort: 30400
