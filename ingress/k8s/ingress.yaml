@@ -4,17 +4,17 @@ metadata:
   name: hangman
 spec:
   rules:
-  - host: trump.minikube
-    http:
-      paths:
-      - path: /
-        backend:
-          serviceName: hangman1
-          servicePort: http
-  - host: halloween.minikube
-    http:
-      paths:
-      - path: /
-        backend:
-          serviceName: hangman2
-          servicePort: http
+    - host: <!!CHANGE_ME!!>
+      http:
+        paths:
+          - path: <!!CHANGE_ME!!>
+            backend:
+              serviceName: <!!CHANGE_ME!!>
+              servicePort: <!!CHANGE_ME!!>
+    - host: <!!CHANGE_ME!!>
+      http:
+        paths:
+          - path: <!!CHANGE_ME!!>
+            backend:
+              serviceName: <!!CHANGE_ME!!>
+              servicePort: <!!CHANGE_ME!!>
