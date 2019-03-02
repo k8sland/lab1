@@ -1,0 +1,38 @@
+---
+apiVersion: v1
+kind:       Service
+metadata:
+  name: inspect
+  labels:
+    app: inspect
+spec:
+  clusterIP: None
+  selector:
+    app: inspect
+  ports:
+  - port:       4000
+    targetPort: http
+
+---
+apiVersion: apps/v1
+kind:       StatefulSet
+metadata:
+  name: inspect
+spec:
+  serviceName: inspect
+  replicas:    5
+  selector:
+    matchLabels:
+      app: inspect
+  template:
+    metadata:
+      labels:
+        app: inspect
+    spec:
+      containers:
+      - name:            inspect
+        image:           k8sland/go-inspector:0.0.1
+        imagePullPolicy: Always
+        ports:
+        - name:          http
+          containerPort: 4000
