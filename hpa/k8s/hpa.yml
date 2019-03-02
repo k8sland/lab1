@@ -1,0 +1,18 @@
+apiVersion: autoscaling/v2beta2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: <!!CHANGE_ME!!>
+spec:
+  scaleTargetRef:
+    apiVersion: <!!CHANGE_ME!!>
+    kind: <!!CHANGE_ME!!>
+    name: <!!CHANGE_ME!!>
+  minReplicas: <!!CHANGE_ME!!>
+  maxReplicas: <!!CHANGE_ME!!>
+  metrics:
+    - type: Resource
+      resource:
+        name: <!!CHANGE_ME!!>
+        target:
+          type: <!!CHANGE_ME!!>
+          averageUtilization: <!!CHANGE_ME!!>
