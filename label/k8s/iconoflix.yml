@@ -1,0 +1,15 @@
+
+---
+# Pod
+apiVersion: v1
+kind:       Pod
+metadata:
+  name: iconoflix
+spec:
+  # Add a node selector
+  <!!CHANGE_ME!!>
+  containers:
+  - name:  iconoflix
+    image: quay.io/imhotepio/iconoflix:mem
+    ports:
+    - containerPort: 4000
