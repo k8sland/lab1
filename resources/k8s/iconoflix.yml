@@ -1,8 +1,7 @@
-
 ---
 # Deployment
 apiVersion: apps/v1
-kind:       Deployment
+kind: Deployment
 metadata:
   name: iconoflix
 spec:
@@ -16,23 +15,22 @@ spec:
         app: iconoflix
     spec:
       containers:
-      - name:  iconoflix
-        image: quay.io/imhotepio/iconoflix:mem
-        resources:
-          !!! CHANGE_ME !!!
-        ports:
-        - containerPort: 4000
+        - name: iconoflix
+          image: quay.io/imhotepio/iconoflix:mem
+          resources: <!!CHANGE_ME!!>
+          ports:
+            - containerPort: 4000
 ---
 # Service
 apiVersion: v1
-kind:       Service
+kind: Service
 metadata:
   name: iconoflix
 spec:
-  type:  NodePort
+  type: NodePort
   selector:
     app: iconoflix
   ports:
-    - name:     http
-      port:     4000
+    - name: http
+      port: 4000
       nodePort: 30400
