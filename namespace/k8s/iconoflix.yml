@@ -1,0 +1,47 @@
+---
+# Define the namespace
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: <!!CHANGE_ME!!>
+
+---
+# Setup Quotas
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: <!!CHANGE_ME!!>
+  <!!CHANGE_ME!!>
+spec:
+  hard:
+    pods: <!!CHANGE_ME!!>
+
+---
+# Pod1 Manifest
+apiVersion: v1
+kind: Pod
+metadata:
+  name: <!!CHANGE_ME!!>
+  <!!CHANGE_ME!!>
+spec:
+  containers:
+    - name: <!!CHANGE_ME!!>
+      image: <!!CHANGE_ME!!>
+      imagePullPolicy: IfNotPresent
+      ports:
+        - containerPort: 4000
+
+---
+# Pod2 Manifest
+apiVersion: v1
+kind: Pod
+metadata:
+  name: <!!CHANGE_ME!!>
+  <!!CHANGE_ME!!>
+spec:
+  containers:
+    - name: iconoflix
+      image: quay.io/imhotepio/iconoflix:mem
+      imagePullPolicy: IfNotPresent
+      ports:
+        - containerPort: 4000
