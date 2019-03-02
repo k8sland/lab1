@@ -1,0 +1,47 @@
+---
+# Define the namespace
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: icx
+
+---
+# Setup Quotas
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: icx
+  namespace: icx
+spec:
+  hard:
+    pods: 2
+
+---
+# Pod1 Manifest
+apiVersion: v1
+kind: Pod
+metadata:
+  name: iconoflix1
+  namespace: icx
+spec:
+  containers:
+    - name: iconoflix
+      image: quay.io/imhotepio/iconoflix:mem
+      imagePullPolicy: IfNotPresent
+      ports:
+        - containerPort: 4000
+
+---
+# Pod2 Manifest
+apiVersion: v1
+kind: Pod
+metadata:
+  name: iconoflix2
+  namespace: icx
+spec:
+  containers:
+    - name: iconoflix
+      image: quay.io/imhotepio/iconoflix:mem
+      imagePullPolicy: IfNotPresent
+      ports:
+        - containerPort: 4000
