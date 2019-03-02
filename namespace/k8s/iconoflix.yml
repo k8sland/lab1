@@ -40,8 +40,8 @@ metadata:
   <!!CHANGE_ME!!>
 spec:
   containers:
-    - name: iconoflix
-      image: quay.io/imhotepio/iconoflix:mem
+    - name: <!!CHANGE_ME!!>
+      image: <!!CHANGE_ME!!>
       imagePullPolicy: IfNotPresent
       ports:
         - containerPort: 4000
