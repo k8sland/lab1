@@ -1,0 +1,102 @@
+---
+# Secrets
+apiVersion: v1
+kind: Secret
+metadata:
+  name: pg
+type: Opaque
+data:
+  user: ZnJlZA== # fred
+  pwd: RHVoIQ== # Duh!
+---
+# PV
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pg
+  labels: <!!CHANGE_ME!!>
+spec:
+  storageClassName: <!!CHANGE_ME!!>
+  persistentVolumeReclaimPolicy: <!!CHANGE_ME!!>
+  capacity:
+    storage: <!!CHANGE_ME!!>
+  accessModes:
+    - <!!CHANGE_ME!!>
+  hostPath:
+    path: <!!CHANGE_ME!!>
+---
+# PVC
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: <!!CHANGE_ME!!>
+spec:
+  storageClassName: standard
+  accessModes:
+    - <!!CHANGE_ME!!>
+  resources:
+    requests:
+      storage: <!!CHANGE_ME!!>
+  selector:
+    matchLabels: <!!CHANGE_ME!!>
+    matchExpressions: <!!CHANGE_ME!!>
+---
+# Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pg
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pg
+  template:
+    metadata:
+      labels:
+        app: pg
+    spec:
+      containers:
+        - name: pg
+          image: postgres:9.6.2-alpine
+          env:
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: pg
+                  key: user
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: pg
+                  key: pwd
+          ports:
+            - name: client
+              containerPort: 5432
+          resources:
+            requests:
+              memory: 128Mi
+              cpu: 300m
+            limits:
+              memory: 256Mi
+              cpu: 500m
+          volumeMounts:
+            - name: pg-data
+              mountPath: /var/lib/postgresql/data
+      volumes:
+        - name: pg-data
+          persistentVolumeClaim:
+            claimName: pg
+---
+# Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: pg
+spec:
+  selector:
+    app: pg
+  type: NodePort
+  ports:
+    - port: 5432
+      nodePort: 30543
