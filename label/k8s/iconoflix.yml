@@ -1,0 +1,15 @@
+
+---
+# Pod
+apiVersion: v1
+kind:       Pod
+metadata:
+  name: iconoflix
+spec:
+  nodeSelector:
+    disk: ssd
+  containers:
+  - name:  iconoflix
+    image: quay.io/imhotepio/iconoflix:mem
+    ports:
+    - containerPort: 4000
