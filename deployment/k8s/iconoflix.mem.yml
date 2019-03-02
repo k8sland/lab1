@@ -1,6 +1,5 @@
-
 apiVersion: apps/v1
-kind:       Deployment
+kind: Deployment
 metadata:
   name: iconoflix
 spec:
@@ -14,7 +13,7 @@ spec:
         app: iconoflix
     spec:
       containers:
-      - name:  iconoflix
-        image: quay.io/imhotepio/iconoflix:file
-        ports:
-        - containerPort: 4000
+        - name: iconoflix
+          image: quay.io/imhotepio/iconoflix:mem
+          ports:
+            - containerPort: 4000
