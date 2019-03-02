@@ -1,0 +1,72 @@
+
+---
+# ConfigMap
+apiVersion: v1
+kind:       ConfigMap
+metadata:
+  name: hangman
+data:
+  custom.txt: |-
+    prince
+    miles
+    thefixx
+
+---
+# Deployment
+kind:       Deployment
+apiVersion: apps/v1
+metadata:
+  name:      hangman
+  labels:
+    app: hangman
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hangman
+  template:
+    metadata:
+      labels:
+        app: hangman
+    spec:
+      containers:
+      - name:            hangman
+        image:           quay.io/imhotepio/hangman-svc-go:0.0.1
+        imagePullPolicy: IfNotPresent
+        args:            ["/app/hangman", "--file", "custom", "--dir", "/var/hm/assets"]
+        resources:
+          requests:
+            cpu:    250m
+            memory: 32Mi
+          limits:
+            cpu:    500m
+            memory: 64Mi
+        ports:
+        - name:          http
+          containerPort: 5000
+        volumeMounts:
+        - name: dictionary
+          mountPath: /var/hm/assets
+          readOnly: true
+      volumes:
+      - name: dictionary
+        configMap:
+          name: hangman
+
+---
+# Service
+kind:       Service
+apiVersion: v1
+metadata:
+  name: hangman
+  labels:
+    app: hangman
+spec:
+  type: ClusterIP
+  selector:
+    app: hangman
+  ports:
+    - name:       http
+      protocol:   TCP
+      port:       5000
+      targetPort: http
