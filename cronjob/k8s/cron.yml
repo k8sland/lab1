@@ -1,0 +1,24 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: updater
+spec:
+  schedule: "*/1 * * * *"
+  concurrencyPolicy: Forbid
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          restartPolicy: Never
+          containers:
+            - name: update
+              image: odise/busybox-curl
+              command: ["curl"]
+              args:
+                - --fail
+                - -XPOST
+                - -H
+                - "Content-Type: application/graphql"
+                - http://iconoflix:$(ICONOFLIX_SERVICE_PORT)/graphql
+                - -d
+                - 'mutation RootMutationType {createMovie(movie: {name: "Home Alone", icons: ["home", "user"]}){name, icons}}'

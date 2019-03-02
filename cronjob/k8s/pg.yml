@@ -1,0 +1,63 @@
+
+---
+# Secrets
+apiVersion: v1
+kind: Secret
+metadata:
+  name: pg
+type: Opaque
+data:
+  user: ZnJlZA==  # fred
+  pwd:  RHVoIQ==  # Duh!
+
+---
+# Postgres
+apiVersion: apps/v1
+kind:       Deployment
+metadata:
+  name: pg
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pg
+  template:
+    metadata:
+      labels:
+        app: pg
+    spec:
+      containers:
+      - name:  pg
+        image: postgres:9.6.2-alpine
+        env:
+        - name: POSTGRES_USER
+          valueFrom:
+            secretKeyRef:
+              name: pg
+              key:  user
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: pg
+              key:  pwd
+        ports:
+        - containerPort: 5432
+        volumeMounts:
+          - name: data
+            mountPath: /var/lib/postgresql/data
+      volumes:
+      - name: data
+        emptyDir: {}
+---
+# Service
+apiVersion: v1
+kind:       Service
+metadata:
+  name: pg
+spec:
+  selector:
+    app: pg
+  type:  NodePort
+  ports:
+    - port:       5432
+      nodePort:   30400
