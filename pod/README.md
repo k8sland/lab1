@@ -55,7 +55,7 @@ kubectl logs -f iconoflix
 
 ```shell
 kubectl exec -it iconoflix -- bash
-wget http://localhost:4000/
+wget -qO- http://localhost:4000/
 ```
 
 ## Update image
@@ -63,6 +63,8 @@ wget http://localhost:4000/
 ```shell
 # Edit your manifest and change the image tag
 kubectl apply -f iconoflix.yml
+# Or
+kubectl edit po iconoflix
 ```
 
 ## Verify!
