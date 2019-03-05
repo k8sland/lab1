@@ -27,9 +27,9 @@
 
 > NOTE You can observe the ReplicaSet thru out the lab using the following cmd
 
-```shell
-kubectl get rs -o wide --watch
-```
+    ```shell
+    kubectl get rs -o wide --watch
+    ```
 
 - Create the iconoflix deployment
 
