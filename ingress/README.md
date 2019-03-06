@@ -38,7 +38,8 @@ to mutiplex across the two stacks.
 - Poor man DNS setup!
 
     ```shell
-    echo "$(minikube ip) traefik-ui.minikube trump.minikube halloween.minikube" | sudo tee -a /etc/hosts
+    echo "$(minikube ip) traefik-ui.minikube trump.minikube halloween.minikube" \
+    | sudo tee -a /etc/hosts
     ```
 
 - Launch Traefik UI
