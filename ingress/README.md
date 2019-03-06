@@ -50,7 +50,13 @@ to mutiplex across the two stacks.
 - Deploy Hangman v1, v2
 
     ```shell
-    kubectl apply -f k8/hangman1 -f k8s/hangman2
+    kubectl apply -f k8/hangman
+    ```
+
+- Deploy Your Ingress
+
+    ```shell
+    kubectl apply -f k8s/ingress.yml
     ```
 
 - Play!
