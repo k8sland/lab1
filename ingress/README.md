@@ -38,7 +38,8 @@ to mutiplex across the two stacks.
 - Poor man DNS setup!
 
     ```shell
-    echo "$(minikube ip) traefik-ui.minikube trump.minikube halloween.minikube" | sudo tee -a /etc/hosts
+    echo "$(minikube ip) traefik-ui.minikube trump.minikube halloween.minikube" \
+    | sudo tee -a /etc/hosts
     ```
 
 - Launch Traefik UI
@@ -50,20 +51,25 @@ to mutiplex across the two stacks.
 - Deploy Hangman v1, v2
 
     ```shell
-    kubectl apply -f k8/hangman1 -f k8s/hangman2
+    kubectl apply -f k8/hangman
+    ```
+
+- Deploy Your Ingress
+
+    ```shell
+    kubectl apply -f k8s/ingress.yml
     ```
 
 - Play!
 
-   ```shell
-   # On OSX...
-   bin/hangman -hm trump.minikube
-   bin/hangman -hm halloween.minikube
-   # Or hit the ingress using http
-   http trump.minikube/new_game
-   http halloween.minikube/new_game
-   ```
-
+  ```shell
+  # On OSX...
+  bin/hangman -hm trump.minikube
+  bin/hangman -hm halloween.minikube
+  # Or hit the ingress using http
+  http trump.minikube/new_game
+  http halloween.minikube/new_game
+  ```
 
 <br/>
 

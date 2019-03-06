@@ -1,5 +1,5 @@
 apiVersion: apps/v1
-kind:       Deployment
+kind: Deployment
 metadata:
   name: dictionary1
   labels:
@@ -15,33 +15,45 @@ spec:
         app: dictionary1
     spec:
       containers:
-      - name: dictionary1
-        image: k8sland/dictionary-svc-go:0.0.2
-        command: ['/app/dictionary', '-a', '/var/dictionary/words', '-d', 'trump.txt']
-        ports:
-        - name: http
-          containerPort: 4000
-        volumeMounts:
-        - name:      dictionary
-          mountPath: /var/dictionary
-        resources:
-          limits:
-            cpu:    100m
-            memory: 4Mi
+        - name: dictionary1
+          image: k8sland/dictionary-svc-go:0.0.2
+          command:
+            [
+              "/app/dictionary",
+              "-a",
+              "/var/dictionary/words",
+              "-d",
+              "trump.txt",
+            ]
+          ports:
+            - name: http
+              containerPort: 4000
+          volumeMounts:
+            - name: dictionary
+              mountPath: /var/dictionary
+          resources:
+            limits:
+              cpu: 100m
+              memory: 10Mi
       initContainers:
-      - name:    git
-        image:   luzhzh/git-client
-        command: ['sh', '-c', 'rm -rf /var/dictionary/words && git clone https://github.com/k8sland/dictionaries.git /var/dictionary/words']
-        volumeMounts:
-        - name:      dictionary
-          mountPath: /var/dictionary
+        - name: git
+          image: luzhzh/git-client
+          command:
+            [
+              "sh",
+              "-c",
+              "rm -rf /var/dictionary/words && git clone https://github.com/k8sland/dictionaries.git /var/dictionary/words",
+            ]
+          volumeMounts:
+            - name: dictionary
+              mountPath: /var/dictionary
       volumes:
-      - name: dictionary
-        hostPath:
-          path: /home/docker/dictionary
+        - name: dictionary
+          hostPath:
+            path: /home/docker/dictionary
 ---
 apiVersion: v1
-kind:       Service
+kind: Service
 metadata:
   name: dictionary1
 spec:
@@ -49,6 +61,6 @@ spec:
   selector:
     app: dictionary1
   ports:
-  - name:       http
-    port:       4001
-    targetPort: http
+    - name: http
+      port: 4001
+      targetPort: http
