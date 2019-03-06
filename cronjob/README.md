@@ -23,7 +23,7 @@
 
 4. Crontab expression for running every minute is: */1 * * * *
 5. Deploy your CronJob
-6. Ensure the job is being run every minute and it fails after the first insert!
+6. Ensure the job is run successfully every minute!
 7. Ensure your new movies have been added!
 
    ```shell
