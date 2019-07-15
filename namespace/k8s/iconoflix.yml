@@ -14,7 +14,7 @@ metadata:
   namespace: icx
 spec:
   hard:
-    pods: 1
+    pods: 2
 
 ---
 # Pod1 Manifest
