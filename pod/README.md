@@ -15,7 +15,7 @@
 5. Check image version
 6. Tail the pod logs
 7. SSH into the running pod and hit the service url
-    1. You should see your request in the logs
+   1. You should see your request in the logs
 8. Change Docker image tag to use **file** instead of **mem** and redeploy your pod
 9. Verify the pod is running and the image has been updated
 10. Delete your pod

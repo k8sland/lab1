@@ -18,14 +18,15 @@ spec:
       - name:  iconoflix
         image: quay.io/imhotepio/iconoflix:mem
         resources:
-          limits:
-            cpu:    100m
-            memory: 70Mi
           requests:
-            cpu:    10m
+            cpu:    100m
             memory: 50Mi
+          limits:
+            cpu:    200m
+            memory: 70Mi
         ports:
-        - containerPort: 4000
+        - name: http
+          containerPort: 4000
 ---
 # Service
 apiVersion: v1
@@ -37,5 +38,6 @@ spec:
   selector:
     app: iconoflix
   ports:
-    - port:     4000
+    - name: http
+      port:     4000
       nodePort: 30400
