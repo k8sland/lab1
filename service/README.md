@@ -9,7 +9,7 @@
 1. Create 2 Iconoflix pod manifest iconoflix1 and iconoflix2
     1. Docker Image: quay.io/imhotepio/iconoflix:mem
 2. Create an Iconoflix service manifest.
-    1. Make sure the service can be accessed locally or port 30400!
+    1. Make sure the service can be accessed locally on port 30400!
 3. Provision iconoflix1 and service
 4. Verify the service and pod are up and running correctly
 5. Tail the pods logs
