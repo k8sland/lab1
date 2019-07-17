@@ -22,7 +22,7 @@ spec:
         resources:
           limits:
             cpu:    100m
-            memory: 4Mi
+            memory: 15Mi
         ports:
         - name:          http
           containerPort: 5000

@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: dictionary1
-        image: k8sland/dictionary-svc-go:0.0.2
+        image: k8sland/go-dictionary-svc:0.0.2
         command: ['/app/dictionary', '-a', '/var/dictionary/words', '-d', 'trump.txt']
         ports:
         - name: http
@@ -27,7 +27,7 @@ spec:
         resources:
           limits:
             cpu:    100m
-            memory: 4Mi
+            memory: 15Mi
       initContainers:
       - name:    git
         image:   luzhzh/git-client
