@@ -4,7 +4,24 @@
 
 # <img src="../assets/lab.png" width="32" height="auto"/> PersistentVolumeClaim Lab
 
-<br/>
+> Provision a PersistentVolume and PersistentVolumeClaim for a Postgresql Database
+
+1. Reuse your secret Postgres lab deployment!
+2. Define a 5Gb PV using a hostPath based volume
+3. Define a PVC requiring RW access to a 2Gb DB partition
+4. Define a Postgres deployment requiring the PVC defined above
+   1. Docker image: postgres:9.6.2-alpine
+   2. Data dir: /var/lib/postgresql/data
+5. Deploy your Postgres deployment
+6. Verify your volume and claim are correctly bound
+7. Ensure the volume is mounted correctly on your Postgres pod
+8. Ensure you can access the database locally
+    1. psql -U user -W -h $(minikube ip) -p port
+9. Create a new database
+10. Delete and recreate your deployment
+11. Check if your new database is there??
+12. Delete your deployment, pv and pvc
+
 
 ---
 ## Manifests
