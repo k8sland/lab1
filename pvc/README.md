@@ -22,12 +22,6 @@
 11. Check if your new database is there??
 12. Delete your deployment, pv and pvc
 
-
----
-## Manifests
-
-+ [Postgres]({{"../pg.yml"}})
-
 <br/>
 
 ---
