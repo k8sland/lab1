@@ -45,4 +45,4 @@ spec:
     - name:       api
       port:       4000
       targetPort: api
-      nodePort:   30500
+      nodePort:   30400
