@@ -47,8 +47,8 @@
 - Tail the pod logs
 
   ```shell
-  kubectl logs -f iconoflix
   kubectl logs -f iconoflix1
+  kubectl logs -f iconoflix2
   ```
 
 # Hit service URL
