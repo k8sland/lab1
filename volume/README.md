@@ -6,7 +6,7 @@
 
 > Deploy your **Iconoflix** application using a movies file mounted from a Github repository.
 
-- Image repositoy: quay.io/imhotepio/iconoflix:file
+- Image repository: quay.io/imhotepio/iconoflix:file
 - Github URL:      https://github.com/imhotepio/iconoflix-movies.git
 - NOTE: The iconoflix application will look for movies located in the following
   directory: /var/iconoflix/movies.txt. If that file exists, movies will be loaded
@@ -16,7 +16,7 @@
    using /var/iconoflix as a mount point.
 2. Deploy your application
 3. Verify the application is up and running and the volume is mounted!
-   1. You will need to ssh to make sure the volume is mounted and the data is correct!
+   1. You will need to shell-in to make sure the volume is mounted and the data is correct!
 4. Bring up graphiQL and make sure the movie Home Alone is listed
    1. Launch graphiQL: open $(minikube service iconoflix --url)/graphiql
    2. GraphQL query: {movies{name icons}} (Left pane!)
@@ -48,6 +48,8 @@
   ```shell
   open `minikube service iconoflix --url`/graphiql
   # Left pane enter {movies{name icons}} and hit run
+  # Or...
+  http $(minikube service iconoflix --url)/graphql query=={movies{name}}
   ```
 
 <br/>
