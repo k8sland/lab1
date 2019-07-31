@@ -23,7 +23,7 @@ spec:
       labels:
         app: apiproxy
     spec:
-      serviceAccountName: apiproxy
+      # serviceAccountName: apiproxy
       containers:
       - name:            apiproxy
         image:           k8sland/go-api-proxy:0.0.1
