@@ -7,7 +7,8 @@
 > Provision an **Iconoflix** application using deployments.
 
 1. Create a deployment manifest
-   1. Using image: quay.io/imhotepio/iconoflix:mem
+   1. Using image: https://quay.io/repository/imhotepio/iconoflix
+   2. Use the tag `mem`
 2. Launch your deployment
 3. Ensure the deployment is up and running and image is using the correct tag
 4. Now update the Iconoflix docker image to use tag **:file**
@@ -22,6 +23,7 @@
 <br/>
 
 ---
+
 ## Commands
 
 > NOTE You can observe the ReplicaSet thru out the lab using the following cmd
