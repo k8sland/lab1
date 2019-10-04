@@ -12,6 +12,6 @@ spec:
     spec:
       containers:
         - name: iconoflix
-          image: quay.io/imhotepio/iconoflix:mem
+          image: <!!CHANGE_ME!!>
           ports:
-            - containerPort: 4000
+            - containerPort: <!!CHANGE_ME!!>
