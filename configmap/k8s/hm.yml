@@ -12,8 +12,7 @@ kind: Deployment
 apiVersion: apps/v1
 metadata:
   name: hangman
-  labels:
-    app: hangman
+  labels: <!!CHANGE_ME!!>
 spec:
   replicas: 1
   selector: <!!CHANGE_ME!!>
