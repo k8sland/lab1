@@ -8,7 +8,8 @@
 
 1. Create a deployment and service for **Postgres** using the official docker image
     1. [Postgresql](https://hub.docker.com/_/postgres/)
-    2. Make sure your service is externally accessible
+    2. Use tag: 9.6.8-alpine
+    3. Make sure your service is externally accessible
 2. Create a secret that contains the db user/password
 3. Leverage your secret in your deployment manifest
 4. Launch your Postgres application
@@ -41,7 +42,7 @@
   kubectl apply -f pg.yml
   ```
 
--  Verify!
+- Verify!
 
    ```shell
    ku get po,svc,ep,secret -l app=pg
@@ -50,7 +51,7 @@
 - Connect...
 
   ```shell
-  psql -U fernand -W -h `minikube ip` -p 30432
+  psql -U fernand -W -h $(minikube ip) -p 30432
   # NOTE: \q to exit!
   ```
 
