@@ -11,8 +11,7 @@ spec:
   selector:
     <!!CHANGE_ME!!>
   ports:
-    - port: 4000
-      targetPort: http
+    - port: <!!CHANGE_ME!!>
 
 ---
 apiVersion: apps/v1
@@ -31,7 +30,7 @@ spec:
       containers:
         - name: inspect
           image: k8sland/go-inspector:0.0.1
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
           ports:
             - name: http
               containerPort: 4000
