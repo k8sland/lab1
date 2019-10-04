@@ -8,24 +8,18 @@
 
 1. Create 2 Iconoflix pod manifest iconoflix1 and iconoflix2
     1. Docker Image: quay.io/imhotepio/iconoflix:mem
-2. Create an Iconoflix service manifest.
+1. Create an Iconoflix service manifest.
     1. Make sure the service can be accessed locally on port 30400!
-3. Provision iconoflix1 and service
-4. Verify the service and pod are up and running correctly
-5. Tail the pods logs
-6. Hit the service URL and check your pod logs
-
-   ```shell
-   curl -XGET `minikube service iconoflix --url`
-   ```
-
-7. Launch the iconoflix2 pod
-8. Tail the new pod log
-9. Once again hit the service URL a few times
-10. What do you see now in the logs?
-11. Delete the service and pods
-
-> Extra-Credit: Can you figure out another way to hit the service url from within a pod using the **service DNS name?
+1. Provision iconoflix1 and service
+1. Verify the service and pod are up and running correctly
+1. Tail the pods logs
+1. Hit the service URL and check your pod logs
+1. Launch the iconoflix2 pod
+1. Tail the new pod log
+1. Once again hit the service URL a few times
+1. What do you see now in the logs?
+1. Delete the service and pods
+1. Extra-Credit: Can you figure out another way to hit the service url from within a pod using the **service DNS name?
 
 <br/>
 
@@ -35,7 +29,7 @@
 - Deploy your service
 
   ```shell
-  kubectl create -f iconoflix.yaml
+  kubectl apply -f iconoflix.yaml
   ```
 
 - Ensure the service and pods are up and running
@@ -55,6 +49,8 @@
 
   ```shell
   http `minikube service iconoflix --url`
+  # Or...
+  curl -XGET `minikube service iconoflix --url`
   ```
 
 # Delete
@@ -74,9 +70,9 @@
 # Extra-Credit: DNS
 
   ```shell
-  ku exec -it iconoflix1 -- wget -qO- http://iconoflix:4000
-  ku exec -it iconoflix1 -- wget -qO- http://iconoflix.default.svc.cluster.local:4000
-  ku exec -it iconoflix1 -- wget -qO- "http://iconoflix:4000/graphiql?query={movies{name}}"
+  kubectl exec -it iconoflix1 -- wget -qO- http://iconoflix:4000
+  kubectl exec -it iconoflix1 -- wget -qO- http://iconoflix.default.svc.cluster.local:4000
+  kubectl exec -it iconoflix1 -- wget -qO- "http://iconoflix:4000/graphiql?query={movies{name}}"
   ```
 
 <br/>
