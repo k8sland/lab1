@@ -16,13 +16,10 @@ metadata:
     app: hangman
 spec:
   replicas: 1
-  selector:
-    matchLabels:
-      app: hangman
+  selector: <!!CHANGE_ME!!>
   template:
     metadata:
-      labels:
-        app: hangman
+      labels: <!!CHANGE_ME!!>
     spec:
       containers:
         - name: hangman
@@ -57,4 +54,4 @@ spec:
     - name: http
       protocol: TCP
       port: 5000
-      targetPort: http
+      targetPort: <!!CHANGE_ME!!>
