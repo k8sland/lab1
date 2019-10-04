@@ -1,5 +1,5 @@
 api:
-  url: http:\/\/192.168.64.83:30401\/picker
+  url: http:\/\/192.168.64.124:30401\/picker
 
 image:
   repository: quay.io/imhotepio/icx-go-gql-ui
