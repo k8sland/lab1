@@ -11,7 +11,7 @@
    1. [Helm Installer](https://github.com/kubernetes/helm/releases)
 2. Setup Tiller...
 3. Verify your helm setup `helm version`
-4. Create a new Helm repo that host the iconoflix chart
+4. Create a new Helm repo that host the [iconoflix charts](https://imhotepio.github.io/iconoflix-charts)
 5. Update the k8s/pg.yml and set the image (9.6.2-alpine) and db credentials
 6. Find and Install the Helm stable/postgresql chart
 7. Verify you can connect to the databases
