@@ -1,13 +1,14 @@
 ---
 # ServiceAccount...
 apiVersion: v1
-kind:       ServiceAccount
+kind: ServiceAccount
 metadata:
-  name:      apiproxy
+  name: apiproxy
   namespace: default
+
 ---
 # Deployment
-kind:       Deployment
+kind: Deployment
 apiVersion: apps/v1
 metadata:
   name: apiproxy
@@ -23,37 +24,37 @@ spec:
       labels:
         app: apiproxy
     spec:
-      # serviceAccountName: apiproxy
+      serviceAccountName: apiproxy
       containers:
-      - name:            apiproxy
-        image:           k8sland/go-api-proxy:0.0.1
-        imagePullPolicy: IfNotPresent
-        args:            ["/app/apiproxy"]
-        resources:
-          requests:
-            cpu:    100m
-            memory: 25Mi
-          limits:
-            cpu:    200m
-            memory: 50Mi
-        readinessProbe:
-          httpGet:
-            path: /v1/healthz
-            port: http
-          initialDelaySeconds: 5
-          periodSeconds:       5
-        livenessProbe:
-          httpGet:
-            path: /v1/healthz
-            port: http
-          initialDelaySeconds: 5
-          periodSeconds:       5
-        ports:
-        - name:          http
-          containerPort: 4004
+        - name: apiproxy
+          image: k8sland/go-api-proxy:0.0.1
+          imagePullPolicy: IfNotPresent
+          args: ["/app/apiproxy"]
+          resources:
+            requests:
+              cpu: 100m
+              memory: 25Mi
+            limits:
+              cpu: 200m
+              memory: 50Mi
+          readinessProbe:
+            httpGet:
+              path: /v1/healthz
+              port: http
+            initialDelaySeconds: 5
+            periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /v1/healthz
+              port: http
+            initialDelaySeconds: 5
+            periodSeconds: 5
+          ports:
+            - name: http
+              containerPort: 4004
 
 ---
-kind:       Service
+kind: Service
 apiVersion: v1
 metadata:
   name: apiproxy
@@ -64,7 +65,8 @@ spec:
   selector:
     app: apiproxy
   ports:
-    - name:     http
+    - name: http
+      port: 4004
+      targetPort: http
       protocol: TCP
       nodePort: 30404
-      port:     4004
