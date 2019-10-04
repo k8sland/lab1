@@ -13,19 +13,21 @@
     2. The Hangman service loads dictionary data using options --dir and --file where:
         1. --dir specifies the name of the directory to load the dictionary data from (default: assets)
         2. --file specifies the name of the dictionary text file minus the **.txt** extension (default: standard)
-        3.  Thus if you want to load a dictionary located in /var/hangman/custom.txt you will specify:
+        3. Thus if you want to load a dictionary located in /var/hangman/custom.txt you will specify:
             1. --dir /var/hangman
             2. --file custom
 3. Create a service manifest for your deployment named **hangman**
 4. Provision your deployment and service
 5. To play the game, you will need to launch the hangman CLI:
     1. Use the following command for the one off launch
+
        ```shell
         kubectl run -i --tty --rm hm \
           --generator=run-pod/v1 \
           --image quay.io/imhotepio/hangman-cli-go:0.0.1 \
           --command -- /app/hangman_cli --url hangman:5000
        ```
+
 6. Add a few more words to your configmap and update the deployment
 7. Play the game a few more times. Are your new words there?
 8. Delete your entire application
