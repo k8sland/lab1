@@ -17,6 +17,7 @@
 1. Verify your volume and claim are correctly bound
 1. Ensure the volume is mounted correctly on your Postgres pod
 1. Ensure you can access the database locally
+   1. NOTE: You will need to setup a port-forward!
 1. Create a new database
 1. Delete and recreate your deployment
 1. Check if your new database is there??
