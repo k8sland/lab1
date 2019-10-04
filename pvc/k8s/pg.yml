@@ -5,9 +5,10 @@ kind: Secret
 metadata:
   name: pg
 type: Opaque
-data:
-  user: ZnJlZA== # fred
-  pwd: RHVoIQ== # Duh!
+stringData:
+  user: fred
+  pwd: <!!CHANGE_ME!!>
+
 ---
 # PV
 apiVersion: v1
@@ -24,6 +25,7 @@ spec:
     - <!!CHANGE_ME!!>
   hostPath:
     path: <!!CHANGE_ME!!>
+
 ---
 # PVC
 apiVersion: v1
@@ -40,6 +42,7 @@ spec:
   selector:
     matchLabels: <!!CHANGE_ME!!>
     matchExpressions: <!!CHANGE_ME!!>
+
 ---
 # Deployment
 apiVersion: apps/v1
@@ -87,6 +90,7 @@ spec:
         - name: pg-data
           persistentVolumeClaim:
             claimName: pg
+
 ---
 # Service
 apiVersion: v1
@@ -96,7 +100,6 @@ metadata:
 spec:
   selector:
     app: pg
-  type: NodePort
+  type: ClusterIP
   ports:
-    - port: 5432
-      nodePort: 30543
+    - port: <!!CHANGE_ME!!>
