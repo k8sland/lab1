@@ -1,23 +1,23 @@
-
 ---
 # Secrets
 apiVersion: v1
-kind:       Secret
+kind: Secret
 metadata:
   name: pg
 type: Opaque
 data:
-  user: ZnJlZA==  # fred
-  pwd:  RHVoIQ==  # Duh!
+  user: ZnJlZA== # fred
+  pwd: RHVoIQ== # Duh!
+
 ---
 # PV
 apiVersion: v1
-kind:       PersistentVolume
+kind: PersistentVolume
 metadata:
   name: pg
   labels:
-     store: db
-     type:  fast
+    store: db
+    type: fast
 spec:
   storageClassName: standard
   persistentVolumeReclaimPolicy: Retain
@@ -27,10 +27,11 @@ spec:
     - ReadWriteOnce
   hostPath:
     path: /tmp/postgres-lab
+
 ---
 # PVC
 apiVersion: v1
-kind:       PersistentVolumeClaim
+kind: PersistentVolumeClaim
 metadata:
   name: pg
 spec:
@@ -44,11 +45,12 @@ spec:
     matchLabels:
       store: db
     matchExpressions:
-    - {key: type, operator: In, values: [fast]}
+      - { key: type, operator: In, values: [fast] }
+
 ---
 # Deployment
 apiVersion: apps/v1
-kind:       Deployment
+kind: Deployment
 metadata:
   name: pg
 spec:
@@ -62,46 +64,47 @@ spec:
         app: pg
     spec:
       containers:
-      - name:  pg
-        image: postgres:9.6.2-alpine
-        env:
-        - name: POSTGRES_USER
-          valueFrom:
-            secretKeyRef:
-              name: pg
-              key:  user
-        - name: POSTGRES_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: pg
-              key:  pwd
-        ports:
-        - name:          client
-          containerPort: 5432
-        resources:
-          requests:
-            memory: 128Mi
-            cpu:    300m
-          limits:
-            memory: 256Mi
-            cpu:    500m
-        volumeMounts:
-          - name:      pg-data
-            mountPath: /var/lib/postgresql/data
+        - name: pg
+          image: postgres:9.6.2-alpine
+          env:
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: pg
+                  key: user
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: pg
+                  key: pwd
+          ports:
+            - name: client
+              containerPort: 5432
+          resources:
+            requests:
+              memory: 128Mi
+              cpu: 300m
+            limits:
+              memory: 256Mi
+              cpu: 500m
+          volumeMounts:
+            - name: pg-data
+              mountPath: /var/lib/postgresql/data
       volumes:
         - name: pg-data
           persistentVolumeClaim:
             claimName: pg
+
 ---
 # Service
 apiVersion: v1
-kind:       Service
+kind: Service
 metadata:
   name: pg
 spec:
   selector:
     app: pg
-  type:  NodePort
+  type: ClusterIP
   ports:
-    - port:     5432
-      nodePort: 30543
+    - name: client
+      port: 5432
