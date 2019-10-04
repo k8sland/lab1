@@ -6,11 +6,17 @@
 
 > Create a CronJob to update Iconoflix movies list every minute.
 
-1. Define your *Iconoflix* deployment
+1. Define your *Iconoflix* deployment and deploy it.
    Image: quay.io/imhotep/iconoflix:db
-2. Define your *Postgres* deployment
+2. Define your *Postgres* deployment and deploy it
    Image: postgres:9.6.2-alpine
-3. Define your *CronJob* manifest
+3. Check out your current movie list
+
+   ```shell
+   curl -G -XGET `minikube service iconoflix --url`/graphql -d query='{movies{name}}'
+    ```
+
+4. Define your *CronJob* manifest
    Image: odise/busybox-curl:latest
    Use this curl command to add a movie. Substitute XX:YY with Iconoflix host/port
 
@@ -21,17 +27,17 @@
     -d 'mutation RootMutationType {createMovie(movie: {name: "Home Alone", icons: ["home", "user"]}){name, icons}}'
    ```
 
-4. Crontab expression for running every minute is: */1 * * * *
-5. Deploy your CronJob
-6. Ensure the job is run successfully every minute!
-7. Ensure your new movies have been added!
+5. Crontab expression for running every minute is: */1 * * * *
+6. Deploy your CronJob
+7. Ensure the job is run successfully every minute!
+8. Ensure your new movies have been added!
 
    ```shell
    curl -G -XGET `minikube service iconoflix --url`/graphql -d query='{movies{name}}'
     ```
 
-8. Delete your Cronjob and Job!
-9. Delete your Postgres and Iconoflix deployments
+9. Delete your Cronjob and Job!
+10. Delete your Postgres and Iconoflix deployments
 
 
 <br/>
