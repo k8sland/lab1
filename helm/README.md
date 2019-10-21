@@ -4,7 +4,6 @@
 
 # <img src="../assets/lab.png" width="32" height="auto"/> Helm Lab
 
-
 > Deploy an **Iconoflix** Helm chart!
 
 1. Install Helm

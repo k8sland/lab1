@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "dictionary.fullname" . }}
+  labels:
+    app.kubernetes.io/name: {{ include "dictionary.name" . }}
+    helm.sh/chart: {{ include "dictionary.chart" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ include "dictionary.name" . }}
+      app.kubernetes.io/instance: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: {{ include "dictionary.name" . }}
+        app.kubernetes.io/instance: {{ .Release.Name }}
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: http
+              protocol: TCP
+              containerPort: 4000
+          resources:
+            {{- toYaml .Values.resources | trim | nindent 12 -}}
+          {{- with .Values.probes -}}
+            {{- $http := dict "port" "http" -}}
+            {{- $_ := set $http "livenessPath" "/api/v1/alive" -}}
+            {{- $_ := set $http "readinessPath" "/api/v1/ready" -}}
+            {{- dict "Values" . "Http" $http  | include "probes.http" | indent 8 -}}
+          {{- end -}}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | trim | nindent 8 }}
+      {{- end }}
+    {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | trim | nindent 8 }}
+    {{- end }}
+    {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | trim | nindent 8 }}
+    {{- end }}
