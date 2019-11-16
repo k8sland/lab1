@@ -1,5 +1,5 @@
 configs:
-  api_url: http:\/\/http://192.168.64.83:30400
+  api_url: http://192.168.64.83:30400
 
 image:
   repository: quay.io/imhotepio/iconoguess
