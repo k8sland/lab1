@@ -67,7 +67,7 @@
   kubectl get po,svc,ep
   kubectl port-forward -n default svc/icx-db-postgresql 5432 &
   # Verify the iconoflix database exists...
-  PGPASSWORD="postgres" psql -U postgres -h localhost -p 5432 -c 'create database iconoflix'
+  PGPASSWORD="postgres" psql -U postgres -h localhost -p 5432 -c '\l'
   ```
 
 - Deploy Iconoflix api and ui
