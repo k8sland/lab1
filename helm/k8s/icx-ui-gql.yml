@@ -1,5 +1,5 @@
 api:
-  url: http:\/\/<!!CHANGE_ME!!>:30401\/picker
+  url: <!!CHANGE_ME!!>
 
 image:
   repository: quay.io/imhotepio/icx-go-gql-ui
