@@ -8,21 +8,22 @@
 
 1. Install Helm
    1. [Helm Installer](https://github.com/kubernetes/helm/releases)
-2. Setup Tiller...
-3. Verify your helm setup `helm version`
+2. Configure your repo to use the [stable](https://kubernetes-charts.storage.googleapis.com) chart repo
+3. Verify your helm setup (version and repo)
 4. Create a new Helm repo that host the [iconoflix charts](https://imhotepio.github.io/iconoflix-charts)
-5. Update the k8s/pg.yml and set the image (9.6.2-alpine) and db credentials
-6. Find and Install the Helm stable/postgresql chart
-7. Verify you can connect to the databases
-8. Search the Iconoflix service chart (icx-go-gql)
-9. Update the Helm config for this icx-go-gql chart using k8s/icx-go-gql.yml
-10. Search for the Iconoflix UI chart (icx-ui-gql)
-11. Update the Iconoflix UI helm config file in k8s/icx-ui-gql.yml
-12. Install the Iconoflix service and UI charts
-13. Validate your application is running
-14. Launch your new Iconoflix ui in your browser!
-15. Have some fun and guess a few movies names
-16. Delete your application completely!
+5. Ensure your repos are up to date!
+6. Change the values file `k8s/pg.yml` - set the image (9.6.2-alpine) and your database credentials
+7. Find and Install the Helm stable/postgresql chart
+8. Verify you can connect to the databases
+9. Locate the Iconoflix service chart (icx-go-gql)
+10. In your `k8s/icx-go-gql.yml` values file specify your database credentials
+11. Search for the Iconoflix UI chart (icx-ui-gql)
+12. In your `k8s/icx-ui-gql.yml` specify your cluster IP
+13. Install the Iconoflix service and UI charts
+14. Validate your entire application is running
+15. Launch your new Iconoflix ui in your browser!
+16. Have some fun and guess a few movies names
+17. Delete your entire application!
 
 <br/>
 
@@ -30,10 +31,21 @@
 
 ## Commands
 
-- Configure Chart Repository
+- Install OSX otherwise [see installation](https://helm.sh/docs/intro/install)
 
   ```shell
+  brew install helm
+  # Verify!
+  helm version
+  ```
+
+- Configure Chart Repositories
+
+  ```shell
+  helm repo add stable https://kubernetes-charts.storage.googleapis.com
   helm repo add iconoflix https://imhotepio.github.io/iconoflix-charts
+  # Verify!
+  helm repo list
   ```
 
 - Update Chart Repository
@@ -46,7 +58,7 @@
 
   ```shell
   helm search postgres
-  helm install stable/postgresql -n icx-db --replace -f k8s/pg.yml
+  helm install icx-db stable/postgresql --replace -f k8s/pg.yml
   ```
 
 - Verify the Database is up and running correctly
@@ -54,16 +66,16 @@
   ```shell
   kubectl get po,svc,ep
   kubectl port-forward -n default svc/icx-db-postgresql 5432 &
-  # Create the iconoflix database...
+  # Verify the iconoflix database exists...
   PGPASSWORD="postgres" psql -U postgres -h localhost -p 5432 -c 'create database iconoflix'
   ```
 
 - Deploy Iconoflix api and ui
 
   ```shell
-  helm search icx
-  helm install iconoflix/icx-go-gql -n icx-go --replace -f k8s/icx-go-gql.yml
-  helm install iconoflix/icx-ui-gql -n icx-ui --replace -f k8s/icx-ui-gql.yml
+  helm search repo icx
+  helm install icx-go iconoflix/icx-go-gql -f k8s/icx-go-gql.yml
+  helm install icx-ui iconoflix/icx-ui-gql -f k8s/icx-ui-gql.yml
   ```
 
 - Launch the ui
