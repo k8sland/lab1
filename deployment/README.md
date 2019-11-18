@@ -6,7 +6,7 @@
 
 > Provision an **Iconoflix** application using deployments.
 
-1. Create a deployment manifest
+1. Create a deployment manifest (see k8s/iconoflix.yml)
    1. Using image: https://quay.io/repository/imhotepio/iconoflix
    2. Use the tag `mem`
 2. Launch your deployment
