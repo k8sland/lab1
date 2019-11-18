@@ -7,7 +7,7 @@
 > Provision an **Iconoflix** application using deployments.
 
 1. Create a deployment manifest (see k8s/iconoflix.yml)
-   1. Using image: https://quay.io/repository/imhotepio/iconoflix
+   1. Using image: [Iconoflix](https://quay.io/repository/imhotepio/iconoflix)
    2. Use the tag `mem`
 2. Launch your deployment
 3. Ensure the deployment is up and running and image is using the correct tag
@@ -30,78 +30,9 @@
 
     ```shell
     kubectl get rs -o wide --watch
+    # or if you've installed watch on OSX...
+    watch kubectl get rs -o wide
     ```
-
-- Create the iconoflix deployment
-
-      ```shell
-      kubectl apply -f iconoflix.yml --record
-      ```
-
-- Ensure pod is running
-
-      ```shell
-      kubectl get deploy iconoflix
-      ```
-
-- Check image version
-
-      ```shell
-      kubectl describe po -l app=iconoflix | grep -i image
-      # or...
-      kubectl get rs -l app=iconoflix -o wide
-      ```
-
-- Update image tag to :file...
-
-  > NOTE: This will be usually done in the manifest!
-
-      ```shell
-      kubectl apply -f iconoflix.yml --record
-      # OR...
-      kubectl set image deploy/iconoflix iconoflix=quay.io/imhotepio/iconoflix:file
-      ```
-
-- Check rollout status and history
-
-      ```shell
-      kubectl rollout status deploy/iconoflix
-      kubectl rollout history deploy/iconoflix
-      ```
-
-- Scale deployment to 5 instances
-
-      ```shell
-      kubectl scale --replicas=5 deploy/iconoflix
-      ```
-
-- Verify!
-
-      ```shell
-      kubectl rollout status deploy/iconoflix
-      ```
-
-- Revert back to initial deployment
-
-  > NOTE: The rolling update ie old pod stays up until the new one is up and running!
-
-      ```shell
-      kubectl rollout undo deploy/iconoflix
-      ```
-
-- Verify!
-
-      ```shell
-      kubectl get rs -l app=iconoflix -o wide
-      ```
-
-- Delete deployment
-
-      ```shell
-      kubectl delete -f iconoflix.yml
-      # OR...
-      kubectl delete deploy/iconoflix
-      ```
 
 <br/>
 
