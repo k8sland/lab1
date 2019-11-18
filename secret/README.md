@@ -15,32 +15,13 @@
 4. Launch your Postgres application
 5. Ensure you can connect to your database locally using your secrets credentials
     1. psql -U MYUSER -W -h $(minikube ip) -p MYPORT
-6. Delete your application and secrets
+6. Delete your application and secrets!
 
 <br/>
 
 ---
+
 ## Commands
-
-- [Alternate!] Create secrets manually...
-
-  ```shell
-  kubectl create secret generic pg-creds \
-    --from-literal=pg_user=blee \
-    --from-literal=pg_pwd=Duh!
-  ```
-
-- Verify!
-
-  ```shell
-  kubectl get secrets pg-creds
-  ```
-
-- Deploy the database
-
-  ```shell
-  kubectl apply -f pg.yml
-  ```
 
 - Verify!
 
@@ -53,12 +34,6 @@
   ```shell
   psql -U fernand -W -h $(minikube ip) -p 30432
   # NOTE: \q to exit!
-  ```
-
-- Cleaning up!
-
-  ```shell
-  kubectl delete -f pg.yml
   ```
 
 <br/>
