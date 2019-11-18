@@ -25,68 +25,14 @@
 <br/>
 
 ---
+
 # Commands
 
-## Launch pod
-
-```shell
-kubectl apply -f k8s/iconoflix.yml
-```
-
-## Ensure pod is running
-
-```shell
-kubectl get po iconoflix
-```
-
-## Check image version
-
-```shell
-kubectl describe po iconoflix | grep -i image
-```
-
-## Tail Logs
-
-```shell
-kubectl logs -f iconoflix
-```
-
-## SSH in...
+## Hit the nginx service URL
 
 ```shell
 kubectl exec -it iconoflix -- bash
 wget -qO- http://localhost:4000/
-```
-
-## Update image
-
-```shell
-# Edit your manifest and change the image tag
-kubectl apply -f iconoflix.yml
-# Or
-kubectl edit po iconoflix
-```
-
-## Verify!
-
-```shell
-kubectl describe po iconoflix | grep Image
-```
-
-## Delete Pod
-
-```shell
-kubectl delete po iconoflix --force --grace-period=0
-```
-
-## Extra-Credit!
-
-You can ssh to the master and hit the service using the pod id.
-
-```shell
-kubectl describe po iconoflix | grep IP
-minikube ssh
-curl -XGET http://POD_IP:4000/
 ```
 
 <br/>
