@@ -46,54 +46,13 @@
   kubectl create cm hangman --from-file data/custom.txt
   ```
 
-- Create deployment and service
-
-  ```shell
-  kubectl apply -f hm.yml
-  ```
-
-- Check your configmap
-
-  ```shell
-  kubectl get cm hangman -o yaml
-  ```
-
-- Check your configmap file is loaded
+- Play the hangman game!
 
   ```shell
   kubectl run -i --tty --rm hm --image quay.io/imhotepio/hangman-cli-go:0.0.1 \
   --generator=run-pod/v1 \
   --command -- /app/hangman_cli --url hangman:5000
   ```
-
-- Update the configmap
-
-> NOTE: In order to pickup the new config map, you have 2 options:
-
-1. Delete the existing pods. They will be restarted
-
-    ```shell
-    # Add new words
-    kubectl edit cm hangman
-    # Verify!
-    kubectl describe cm hangman
-    # Brute force if you don't care out outage
-    kubectl delete po -l app=hangman
-    ```
-
-2. Create a new configmap and update the deployment to leverage rolling
-   updates.
-
-    ```shell
-    # Delete existing configmap
-    kubectl delete cm hangman
-    # Rename the configmap to hangman-new
-    kubectl apply -f hm.yml
-    # Change the configmap name by editing the deployment
-    # or update the manifest file.
-    kubectl edit deploy/hangman
-    # Specify the new cm name
-    ```
 
 <br/>
 
