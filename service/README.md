@@ -25,26 +25,8 @@
 <br/>
 
 ---
+
 ## Commands
-
-- Deploy your service
-
-  ```shell
-  kubectl apply -f iconoflix.yaml
-  ```
-
-- Ensure the service and pods are up and running
-
-  ```shell
-  kubectl get po,svc,ep
-  ```
-
-- Tail the pod logs
-
-  ```shell
-  kubectl logs -f iconoflix1
-  kubectl logs -f iconoflix2
-  ```
 
 # Hit service URL
 
@@ -52,28 +34,6 @@
   http `minikube service iconoflix --url`
   # Or...
   curl -XGET `minikube service iconoflix --url`
-  ```
-
-# Delete
-
-  ```shell
-  kubectl delete po,svc -l app=iconoflix
-  # better if all in file or dir...
-  kubectl delete -f iconoflix.yml
-  ```
-
-# Verify!
-
-  ```shell
-  kubectl get deploy,svc -l app=iconoflix
-  ```
-
-# Extra-Credit: DNS
-
-  ```shell
-  kubectl exec -it iconoflix1 -- wget -qO- http://iconoflix:4000
-  kubectl exec -it iconoflix1 -- wget -qO- http://iconoflix.default.svc.cluster.local:4000
-  kubectl exec -it iconoflix1 -- wget -qO- "http://iconoflix:4000/graphiql?query={movies{name}}"
   ```
 
 <br/>
