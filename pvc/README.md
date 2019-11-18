@@ -36,18 +36,6 @@
   sudo mkdir /tmp/postgres-lab
   ```
 
-- Deploy postgres
-
-  ```shell
-  kubectl apply -f k8s/pg.yml
-  ```
-
-- Verify!
-
-  ```shell
-  kubectl get po,pv,pvc
-  ```
-
 -- Setup PortForward
 
   ```shell
@@ -71,22 +59,6 @@
 
   ```shell
   psql -U fred -W -h localhost -p 5432 -c '\l'
-  ```
-
-- Recreate deployment and verify DB
-
-  ```shell
-  kubectl delete -f k8s/pg.yml
-  kubectl apply -f k8s/pg.yml
-  kubectl port-forward $(kubectl get po -l app=pg --template '{{(index .items 0).metadata.name}}') 5432
-  # Use \q to exit
-  psql -U fred -h localhost -p 5432 pvc_lab
-  ```
-
-- Clean up!
-
-  ```shell
-  ku delete -f k8s/pg.yml
   ```
 
 <br/>
