@@ -24,44 +24,14 @@
 ---
 ## <img src="../assets/fox.png" width="32" height="auto"/> Commands
 
-- Ensure set is running correctly
-
-  ```shell
-  kubectl get sts inspect
-  ```
-
 - Check Endpoints
 
-  ! Note yous must access pods individually now
+  ! Note you must access pods individually now
 
   ```shell
   kubectl exec -it inspect-0 -- wget -qO - http://inspect-2.inspect.default.svc.cluster.local:4000/
   # Or...
   kubectl exec -it inspect-0 -- wget -qO - http://inspect-2.inspect:4000/
-  ```
-
-- Ensure the pod is back up and the host is preserved
-
-  ```shell
-  kubectl exec -it inspect-1 -- printenv | grep HOSTNAME
-  ```
-
-- Scale up the cluster by adding one more replica
-
-  ```shell
-  kubectl scale sts inspect --replicas=6
-  ```
-
-- Ensure all pods are up and running
-
-  ```shell
-  kubectl get pod,ep
-  ```
-
-- Now scale down to one pod
-
-  ```shell
-  kubectl scale sts inspect --replicas=1
   ```
 
 <br/>
