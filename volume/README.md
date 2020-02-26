@@ -18,7 +18,10 @@
 3. Verify the application is up and running and the volume is mounted!
    1. You will need to shell-in to make sure the volume is mounted and the data is correct!
 4. Bring up graphiQL and make sure the movie Home Alone is listed
-   1. Launch graphiQL: open $(minikube service iconoflix --url)/graphiql
+   1. Launch graphiQL: 
+      ```shell
+      open $(minikube service iconoflix --url)/graphiql
+      ```
    2. GraphQL query: {movies{name icons}} (Left pane!)
 
 
