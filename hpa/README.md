@@ -26,10 +26,9 @@
 ---
 ## <img src="../assets/fox.png" width="32" height="auto"/> Commands
 
-- Minikube Enable Heapster + Metrics server
+- Minikube Enable Metrics server
 
     ```shell
-    minikube addons enable heapster
     minikube addons enable metrics-server
     ```
 
