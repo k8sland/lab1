@@ -28,7 +28,7 @@
 
 # Commands
 
-## Hit the nginx service URL
+## Hit the Iconoflix service URL
 
 ```shell
 kubectl exec -it iconoflix -- bash
