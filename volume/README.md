@@ -18,7 +18,7 @@
 3. Verify the application is up and running and the volume is mounted!
    1. You will need to shell-in to make sure the volume is mounted and the data is correct!
 4. Bring up graphiQL and make sure the movie Home Alone is listed
-   1. Launch graphiQL: 
+   1. Launch graphiQL:
       ```shell
       open $(minikube service iconoflix --url)/graphiql
       ```
@@ -58,5 +58,5 @@
 <br/>
 
 ---
-<img src="../assets/imhotep_logo.png" width="32" height="auto"/> © 2019 Imhotep Software LLC.
+<img src="../assets/imhotep_logo.png" width="32" height="auto"/> © 2020 Imhotep Software LLC.
 All materials licensed under [Apache v2.0](http://www.apache.org/licenses/LICENSE-2.0)
