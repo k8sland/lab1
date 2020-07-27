@@ -1,14 +1,10 @@
----
-# Service
 kind: Service
 apiVersion: v1
 metadata:
-  name: <!!CHANGE_ME!!>
+  name: iconoflix
 spec:
-  type:  <!!CHANGE_ME!!>
-  <!!CHANGE_ME Add Selector!!>
   ports:
-    - name:       <!!CHANGE_ME!!>
-      port:       <!!CHANGE_ME!!>
-      targetPort: <!!CHANGE_ME!!>
-      <!!CHANGE_ME Add NodePort!!>
+    - name: http
+      port: 5000
+      targetPort: http
+      nodePort: 30400

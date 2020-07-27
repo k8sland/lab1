@@ -20,7 +20,7 @@
 9. Once again hit the service URL a few times
 10. What do you see now in the logs?
 11. Delete the service and pods
-12. Extra-Credit: Can you figure out another way to hit the service url from within a pod using the **service DNS name?
+12. Extra-Credit: Can you figure out another way to hit the service url?
 
 <br/>
 

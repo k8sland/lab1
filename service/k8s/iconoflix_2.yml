@@ -1,15 +1,11 @@
----
-# Pod1
 apiVersion: v1
 kind: Pod
 metadata:
-  name: !!!CHANGE_ME!!!
-  labels:
-    app: iconoflix
+  name: iconoflix2
 spec:
   containers:
     - name: iconoflix
-      image: !!!CHANGE_ME!!!
+      image: quay.io/imhotep/iconoflix:mem
       ports:
         - name: api
-          containerPort: !!!CHANGE_ME!!!
+          containerPort: 4000
