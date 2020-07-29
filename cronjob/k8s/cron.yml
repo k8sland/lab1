@@ -12,6 +12,13 @@ spec:
           restartPolicy: Never
           containers:
             - name: update
-              image: <!!CHANGE_ME!!>
-              command: <!!CHANGE_ME!!>
-              args: <!!CHANGE_ME!!>
+              image: odise/busybox-curl
+              command: ["curl"]
+              args:
+                - --fail
+                - -XPOST
+                - -H
+                - "Content-Type: application/graphql"
+                - http://iconoflix:$(ICONOFLIX_SERVICE_PORT)/graphql
+                - -d
+                - 'mutation RootMutationType {createMovie(movie: {name: "Home Alone", icons: ["home", "user"]}){name, icons}}'
