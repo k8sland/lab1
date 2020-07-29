@@ -45,7 +45,7 @@ spec:
     matchLabels:
       store: db
     matchExpressions:
-      - { key: type, operator: In, values: [fast] }
+      - { key: type, operator: In, values: [fast,furious] }
 
 ---
 # Deployment
