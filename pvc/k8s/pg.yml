@@ -22,7 +22,7 @@ spec:
   storageClassName: standard
   persistentVolumeReclaimPolicy: Retain
   capacity:
-    storage: 5Gi
+    storage: 6Gi
   accessModes:
     - ReadWriteOnce
   hostPath:
