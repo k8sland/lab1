@@ -32,13 +32,13 @@ spec:
             httpGet:
               path: /check/alive
               port: api
-            initialDelaySeconds: 5
+            initialDelaySeconds: 20
             periodSeconds: 10
           readinessProbe:
             httpGet:
               path: /check/health
               port: api
-            initialDelaySeconds: 5
+            initialDelaySeconds: 15
             periodSeconds: 5
 ---
 # Service

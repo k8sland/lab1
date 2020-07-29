@@ -19,7 +19,7 @@ metadata:
   name: inspect
 spec:
   serviceName: inspect
-  replicas: 5
+  replicas: 1
   selector:
     matchLabels:
       app: inspect
