@@ -31,8 +31,7 @@
 ## Hit the Iconoflix service URL
 
 ```shell
-kubectl exec -it iconoflix -- bash
-wget -qO- http://localhost:4000/
+kubectl exec -it iconoflix -- wget -qO- http://localhost:4000/
 ```
 
 <br/>
