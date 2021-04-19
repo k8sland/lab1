@@ -22,49 +22,5 @@
 <br/>
 
 ---
-## Commands
-
-- Provision your application
-
-  ```shell
-  kubectl apply -f iconoflix.yml
-  ```
-
-- Verify!
-
-  ```shell
-  kubectl get po -o wide --watch
-  kubectl get events
-  ```
-
-- Label your node
-
-  ```shell
-  kubectl label no minikube disk=ssd
-  ```
-
-- Verify!
-
-  ```shell
-  kubectl get no --show-labels
-  # or...
-  kubectl get no -L disk
-  ```
-
-- Delete your node label
-
-  ```shell
-  kubectl label no minikube disk-
-  ```
-
-- Delete your pod
-
-  ```shell
-  kubectl delete -f iconoflix.yml
-  ```
-
-<br/>
-
----
 <img src="../assets/imhotep_logo.png" width="32" height="auto"/> © 2020 Imhotep Software LLC.
 All materials licensed under [Apache v2.0](http://www.apache.org/licenses/LICENSE-2.0)
