@@ -17,9 +17,9 @@
 4. Check your namespace quota and make sure the used/hard match
 5. Increase your namespace quota to allow more than one pod
 6. Redeploy your application
-7.  Ensure you now have 2 pods up and running
-8.  Delete your namespace
-9.  Ensure the Iconoflix pods are terminated!
+7. Ensure you now have 2 pods up and running
+8. Delete your namespace
+9. Ensure the Iconoflix pods are terminated!
 
 <br/>
 
