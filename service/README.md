@@ -31,9 +31,9 @@
 # Hit service URL
 
   ```shell
-  http `minikube service iconoflix --url`
+  http $(minikube service iconoflix --url)
   # Or...
-  curl -XGET `minikube service iconoflix --url`
+  curl -XGET $(minikube service iconoflix --url)
   ```
 
 <br/>

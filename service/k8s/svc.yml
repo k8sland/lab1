@@ -5,6 +5,4 @@ metadata:
 spec:
   ports:
     - name: http
-      port: 5000
-      targetPort: http
-      nodePort: 30400
+      <<!!CHANGE_ME!!>>

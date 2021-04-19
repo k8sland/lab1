@@ -8,4 +8,4 @@ spec:
       image: quay.io/imhotep/iconoflix:mem
       ports:
         - name: api
-          containerPort: 4000
+          containerPort: <<!!CHANGE_ME!!>>
