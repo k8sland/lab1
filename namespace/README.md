@@ -7,9 +7,9 @@
 > Create a namespace with quotas for your iconoflix application
 
 1. Create the following Kubernetes resources (see k8s/iconoflix.yml):
-    1. A namespace named **icx**
-    2. A namespace quota restricting to only **one** pod
-    3. 2 Iconoflix pods namely iconoflix1 and iconoflix2 using the following specification:
+    1. A namespace named *icx*
+    2. A namespace quota named *icx* restricting to only **one** pod
+    3. 2 Iconoflix pods namely *iconoflix1* and *iconoflix2* using the following specification:
         1. Docker image: [Iconoflix](https://quay.io/repository/imhotepio/iconoflix)
         2. Use image tag: **mem**
 2. Deploy your application
