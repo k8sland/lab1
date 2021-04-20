@@ -6,12 +6,12 @@
 
 > Create a service to front your **Iconoflix** application pod(s)
 
-1. Create 2 Iconoflix pod manifests iconoflix1 and iconoflix2
+1. Create 2 Iconoflix pod named *iconoflix1* and *iconoflix2* respectively
     1. Using the following image: [Iconoflix](http://quay.io/imhotepio/iconoflix)
     2. Be sure to use the tag `mem`
-2. Create an Iconoflix service manifest.
+2. Create a manifest for a service named *iconoflix*.
     1. Make sure the service can be accessed locally on port 30400!
-3. Provision iconoflix1 and service
+3. Provision iconoflix1 and the service
 4. Verify the service and pod are up and running correctly
 5. Tail the pods logs
 6. Hit the service URL and check your pod logs
