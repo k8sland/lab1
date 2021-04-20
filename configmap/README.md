@@ -25,10 +25,10 @@
     1. Use the following command for the one off launch
 
        ```shell
-        kubectl run -i --tty --rm hm \
-          --generator=run-pod/v1 \
-          --image quay.io/imhotepio/hangman-cli-go:0.0.1 \
-          --command -- /app/hangman_cli --url hangman:5000
+       # NOTE: Enter one character at a time!
+       kubectl run -i --tty --rm hm \
+        --image quay.io/imhotepio/hangman-cli-go:0.0.1 \
+        --command -- /app/hangman_cli --url hangman:5000
        ```
 
 6. Add a few more words to your configmap and update the deployment
