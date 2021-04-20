@@ -6,9 +6,10 @@
 
 > Provision an **Iconoflix** application using deployments.
 
-1. Create a deployment manifest (see k8s/iconoflix.yml)
+1. Create a deployment named *iconoflix* (see k8s/iconoflix.yml)
    1. Using image: [Iconoflix](https://quay.io/repository/imhotepio/iconoflix)
    2. Use the tag `mem`
+   3. Use label selector `app=iconoflix`
 2. Launch your deployment
 3. Ensure the deployment is up and running and image is using the correct tag
 4. Now update the Iconoflix docker image to use tag **:file**
