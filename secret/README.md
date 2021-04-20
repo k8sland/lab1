@@ -26,8 +26,8 @@
 
   ```shell
   kubectl create secret generic pg-creds \
-    --from-literal=pg_user=blee \
-    --from-literal=pg_pwd=Duh!
+    --from-literal=pg_user=fernand \
+    --from-literal=pg_pwd=B0z0
   ```
 
 - Verify!
