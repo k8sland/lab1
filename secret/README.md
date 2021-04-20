@@ -10,7 +10,7 @@
     1. [Postgresql](https://hub.docker.com/_/postgres/)
     2. Use tag: 9.6.8-alpine
     3. Make sure your service is externally accessible
-2. Create a secret that contains the db user/password
+2. Create a secret that contains the db user/password.
 3. Leverage your secret in your deployment manifest
 4. Launch your Postgres application
 5. Ensure you can connect to your database locally using your secrets credentials
