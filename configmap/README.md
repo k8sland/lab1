@@ -16,6 +16,9 @@
         3. Thus if you want to load a dictionary located in /var/hangman/custom.txt you will specify:
             1. --dir /var/hangman
             2. --file custom
+    3. Use label `app=hangman`
+    4. Create a configmap volume named `dictionary`
+    5. Create an associated volume mount
 3. Create a service manifest for your deployment named **hangman**
 4. Provision your deployment and service
 5. To play the game, you will need to launch the hangman CLI:
@@ -33,7 +36,6 @@
 8. Delete your entire application
 
 > **Extra credit**: Can you think of another way to reload the data?
-
 
 <br/>
 
