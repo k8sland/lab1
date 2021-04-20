@@ -9,6 +9,7 @@
 1. Create a manifest for the **Iconoflix** program (see k8s/iconoflix.yml)
     1. Use Docker Image: quay.io/imhotepio/iconoflix:mem
     2. Specify a nodeSelector *disk=ssd*
+    3. Name your pod *iconoflix*
 2. Deploy your application
 3. What's happening to your pod?
 4. How can you tell what's going on?
