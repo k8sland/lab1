@@ -52,7 +52,6 @@
 
   ```shell
   kubectl run -i --tty --rm hm --image quay.io/imhotepio/hangman-cli-go:0.0.1 \
-  --generator=run-pod/v1 \
   --command -- /app/hangman_cli --url hangman:5000
   ```
 
