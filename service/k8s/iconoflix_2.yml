@@ -5,7 +5,7 @@ metadata:
 spec:
   containers:
     - name: iconoflix
-      image: quay.io/imhotep/iconoflix:mem
+      image: quay.io/imhotepio/iconoflix:mem
       ports:
         - name: api
           containerPort: <<!!CHANGE_ME!!>>

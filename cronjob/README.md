@@ -7,7 +7,7 @@
 > Create a CronJob to update Iconoflix movies list every minute.
 
 1. Define your *Iconoflix* deployment
-   Image: quay.io/imhotep/iconoflix:db
+   Image: quay.io/imhotepio/iconoflix:db
 2. Define your *Postgres* deployment
    Image: postgres:9.6.2-alpine
 3. Define your *CronJob* manifest
