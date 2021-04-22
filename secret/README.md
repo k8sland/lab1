@@ -14,7 +14,7 @@
 3. Leverage your secret in your deployment manifest
 4. Launch your Postgres application
 5. Ensure you can connect to your database locally using your secrets credentials
-    1. psql -U MYUSER -W -h $(minikube ip) -p MYPORT
+    1. psql -U MYUSER -W -h localhost -p MYPORT
 6. Delete your application and secrets
 
 <br/>
@@ -45,13 +45,13 @@
 - Verify!
 
    ```shell
-   ku get po,svc,ep,secret -l app=pg
+   kubectl get po,svc,ep,secret -l app=pg
    ```
 
 - Connect...
 
   ```shell
-  psql -U fernand -W -h $(minikube ip) -p 30432
+  psql -U fernand -W -h localhost -p 5432
   # NOTE: \q to exit!
   ```
 
